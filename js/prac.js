@@ -1,9 +1,8 @@
 letters = "";
 words = ""
-function Set_Letter()
+function Set_Letters(inp)
 {
-	while(letters == "" || letters == null)
-		letters = prompt("Введите буквы без пробелов");
+	letters = inp;
 	for(i = 0; i < letters.length; i++)
 	{
 		if(letters[i].toLowerCase() == letters[i].toUpperCase())
@@ -16,13 +15,12 @@ function Set_Letter()
 	letters = letters.toLowerCase();
 }
 
-function Set_Word()
+function Set_Word(cword)
 {
 	word = "";
 	fl = true
 	while(fl)
 	{
-		cword = prompt("Введите слово с буквами " + letters + "\n" + "Введенные слова: " + words);
 		cword = cword.toLowerCase();
 		word = cword;
 		fl = false;
@@ -48,11 +46,22 @@ function Set_Word()
 	words += " " + word;
 }
 
-Set_Letter();
+
+
+while (letters == "" || letters == null)
+	Set_Letters(prompt("Введите буквы без пробелов"));
+
+
+let div_letters = document.getElementById("Letters");
+div_letters.innerHTML = "Буквы: " + letters;
+
+let div_words = document.getElementById("Words");
 
 while(true)
 {
-	Set_Word();
+	Set_Word(prompt("Введите слово с буквами " + letters + "\n" + "Введенные слова: " + words));
+	div_words.innerHTML = "Слова: " + words;
+	//alert(words);
 }
 //alert("All");
 
