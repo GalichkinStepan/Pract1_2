@@ -1,5 +1,6 @@
 letters = "";
-words = ""
+words = " ";
+Kastil = "Слова: ";
 function Set_Letters(inp)
 {
 	letters = inp;
@@ -18,12 +19,9 @@ function Set_Letters(inp)
 function Set_Word(cword)
 {
 	word = "";
-	fl = true
-	while(fl)
-	{
 		cword = cword.toLowerCase();
 		word = cword;
-		fl = false;
+		fl = true;
 		for(i = 0; i < letters.length; i++)
 		{
 			if(cword.includes(letters[i]))
@@ -32,18 +30,18 @@ function Set_Word(cword)
 			}
 			else
 			{
+				fl = false;
 				alert("В слове нет буквы " + letters[i]);
-				fl = true;
 				break;
 			}
 		}
-		if(words.search(cword) != -1)
+		if(words.search(" " + word + " ") != -1)
 		{
-			fl = true;
+			fl = false;
 			alert("Такое слово уже есть!");
 		}
-	}
-	words += " " + word;
+	if(fl)
+		words += word + " ";
 }
 
 
@@ -53,17 +51,21 @@ while (letters == "" || letters == null)
 
 
 let div_letters = document.getElementById("Letters");
-div_letters.innerHTML = "Буквы: " + letters;
+div_letters.innerHTML = "Буквы: " + letters.split('').join(" ");
 
 let div_words = document.getElementById("Words");
 
+
+
+/*
 while(true)
 {
 	Set_Word(prompt("Введите слово с буквами " + letters + "\n" + "Введенные слова: " + words));
 	div_words.innerHTML = "Слова: " + words;
 	//alert(words);
 }
-//alert("All");
+*/
+
 
 
 
